@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Chrome Ping Extension Example",
+  "description": "Simple extension which can be queried from a target website.",
+  "version": "0.0.1",
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png",
+    "512": "icons/512.png"
+  },
+  "externally_connectable": {
+    "matches": [
+      "*://chromepingextension.azurewebsites.net/*"
+    ]
+  }
+}

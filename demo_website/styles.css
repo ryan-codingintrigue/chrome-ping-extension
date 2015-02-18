@@ -1,0 +1,60 @@
+/* Body */
+body {
+	font-family: "Open Sans", Arial;
+	margin: 0;
+	padding: 0;
+	background: #BED7EA;
+}
+/* Header */
+h1 {
+	font-family: "Roboto Slab";
+	font-size: 3.0em;
+	padding: 20px 0;
+	text-align: center;
+	color: #034475;
+}
+/* Outer Wrapper */
+.body-wrapper {
+	width: 500px;
+	margin: 0 auto;
+}
+/* Paragraphs */
+p {
+	font-weight: 600;
+	color: #034475;
+}
+/* Status text */
+#ext-status {
+	display: block;
+}
+#ext-status.warning {
+	color: orange;
+}
+#ext-status.not-installed {
+	color: red;
+}
+#ext-status.installed {
+	color: green;
+}
+/* Inline Install Paragraph */
+#inline-install {
+	font-weight: normal;
+}
+#inline-install button {
+	font-family: "Open Sans";
+	font-size: 1.2em;
+	display: block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	border: 0;
+	background: rgb(0,94,178);
+	color: #FFF;
+	cursor: pointer;
+}
+#inline-install button:hover {
+	background: rgba(0,94,178,0.8);
+}
+
+.hide {
+	display: none;
+}
