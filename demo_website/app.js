@@ -49,11 +49,8 @@
 	// Checks to see if the extension is installed and calls the necessary callback
 	function checkExtensionIsInstalled(success, failure) {
 		// If the Chrome.Runtime API is not defined, the domain has not been added to the manifest or the extension is not installed
-		// We *could* call the failure callback here
 		if(!chrome.runtime) {
-			statusSpan.innerHTML = "Chrome Runtime not found. Domain must match the <strong>externally_connectable</strong> property defined in manifest.json";
-			statusSpan.setAttribute("class", "warning");
-			// We can't go ahead with the check without this
+			failure.call();
 			return;
 		}
 		statusSpan.innerHTML = "Checking...";
