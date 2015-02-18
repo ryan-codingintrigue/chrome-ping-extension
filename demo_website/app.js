@@ -20,6 +20,7 @@
 		checkExtensionIsInstalled(function() {
 			statusSpan.innerText = "Installed";
 			statusSpan.setAttribute("class", "installed");
+			hideInlineInstallMessage();
 		}, function() {
 			statusSpan.innerText = "Not Installed";
 			statusSpan.setAttribute("class", "not-installed");
@@ -32,18 +33,25 @@
 	
 	// Attempts to install the extension from the Chrome web store
 	function attemptInlineInstall() {
-		// We can pull the link from the chrome-webstore-item link in the <head>
-		chrome.webstore.install(document.querySelector("link[rel='chrome-webstore-item']").getAttribute("href"), function () {
+		function webstoreCallback() {
 			// Try the extension check on success & failure so that the status <span> is updated
-			retryExtensionCheck();
-		}, function (e) {
-			retryExtensionCheck();
-		});
+			// We may need to wait a few seconds for the extension to initialize
+			setTimeout(retryExtensionCheck, 1500);
+		}
+		// We can pull the link from the chrome-webstore-item link in the <head>
+		chrome.webstore.install(document.querySelector("link[rel='chrome-webstore-item']").getAttribute("href"), 
+			webstoreCallback, webstoreCallback
+		);
 	}
 	
 	// Show the inline install paragraph
 	function showInlineInstallMessage() {
 		inlineInstallParagraph.setAttribute("class", "show");
+	}
+	
+	// Hide the inline install paragraph
+	function hideInlineInstallMessage() {
+		inlineInstallParagraph.setAttribute("class", "hide");
 	}
 
 	// Checks to see if the extension is installed and calls the necessary callback
